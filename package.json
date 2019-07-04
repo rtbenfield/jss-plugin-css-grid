@@ -1,0 +1,19 @@
+{
+  "name": "jss-plugin-css-grid",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/rtbenfield/jss-plugin-css-grid.git",
+  "author": "Tyler Benfield <rtbenfield@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^24.8.0",
+    "prettier": "1.18.2",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "@types/jest": "^24.0.13",
+    "css-vendor": "^2.0.5",
+    "jss": "^10.0.0-alpha.17"
+  }
+}
