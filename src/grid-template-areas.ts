@@ -1,17 +1,5 @@
 import { Rule, Style, StyleSheet } from "jss";
 import { parseGridAreas } from "./utils/parseGridAreas";
-import { parseGridGap } from "./utils/parseGridGap";
-
-function padWithGap(
-  value: string | undefined,
-  gap: string | undefined,
-): string | undefined {
-  if (!value || !gap) {
-    return value;
-  }
-
-  return value.split(" ").join(` ${gap} `);
-}
 
 export default function gridTemplateAreas(
   style: Style,

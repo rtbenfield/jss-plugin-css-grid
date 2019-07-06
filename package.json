@@ -1,19 +1,38 @@
 {
   "name": "jss-plugin-css-grid",
   "version": "0.1.0",
-  "main": "index.js",
   "repository": "https://github.com/rtbenfield/jss-plugin-css-grid.git",
   "author": "Tyler Benfield <rtbenfield@gmail.com>",
   "license": "MIT",
+  "source": "src/index.ts",
+  "main": "dist/jss-plugin-css-grid.js",
+  "module": "dist/jss-plugin-css-grid.mjs",
+  "unpkg": "dist/jss-plugin-css-grid.umd.js",
+  "types": "dist/jss-plugin-css-grid.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "check": "prettier --write src/**/* @types/**/* __tests__/**/* __mocks__/**/* README.md",
+    "format": "prettier --write src/**/* @types/**/* __tests__/**/* __mocks__/**/* README.md",
+    "prebuild": "rimraf ./dist",
+    "build": "cross-env NODE_ENV=production tsdx build --format=cjs,esm,umd",
+    "prepublish": "npm run build",
+    "test": "jest"
+  },
   "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "cross-env": "^5.2.0",
     "jest": "^24.8.0",
+    "jest-junit": "^6.4.0",
     "prettier": "1.18.2",
+    "rimraf": "^2.6.3",
     "ts-jest": "^24.0.2",
+    "tsdx": "^0.7.2",
     "typescript": "^3.2.2"
   },
   "dependencies": {
-    "@types/jest": "^24.0.13",
     "css-vendor": "^2.0.5",
-    "jss": "^10.0.0-alpha.17"
+    "jss": "^10.0.0-alpha.22"
   }
 }

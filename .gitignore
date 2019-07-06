@@ -60,4 +60,8 @@ typings/
 # next.js build output
 .next
 
+# Rollup cache
+.rts2*
+
 dist
+test-results
