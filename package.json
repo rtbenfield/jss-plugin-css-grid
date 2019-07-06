@@ -1,14 +1,14 @@
 {
   "name": "jss-plugin-css-grid",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": "https://github.com/rtbenfield/jss-plugin-css-grid.git",
   "author": "Tyler Benfield <rtbenfield@gmail.com>",
   "license": "MIT",
   "source": "src/index.ts",
-  "main": "dist/jss-plugin-css-grid.js",
-  "module": "dist/jss-plugin-css-grid.mjs",
-  "unpkg": "dist/jss-plugin-css-grid.umd.js",
-  "types": "dist/jss-plugin-css-grid.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/jss-plugin-css-grid.esm.js",
+  "unpkg": "dist/jss-plugin-css-grid.umd.production.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
