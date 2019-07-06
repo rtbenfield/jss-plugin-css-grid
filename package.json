@@ -17,7 +17,7 @@
     "format": "prettier --write src/**/* @types/**/* __tests__/**/* __mocks__/**/* README.md",
     "prebuild": "rimraf ./dist",
     "build": "cross-env NODE_ENV=production tsdx build --format=cjs,esm,umd",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "test": "jest"
   },
   "devDependencies": {

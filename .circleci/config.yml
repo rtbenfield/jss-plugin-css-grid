@@ -1,11 +1,13 @@
 version: 2.1
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:lts
+
 jobs:
-  build:
-    docker:
-      - image: circleci/node:lts
-
-    working_directory: ~/repo
-
+  test:
+    <<: *defaults
     steps:
       - checkout
 
@@ -41,6 +43,11 @@ jobs:
       - store_artifacts:
           path: coverage
           destination: coverage
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
 
       # Compile TypeScript
       - run:
@@ -51,3 +58,41 @@ jobs:
       - store_artifacts:
           path: dist
           destination: dist
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - test
+      - build:
+          requires:
+            - test
+      - hold:
+          type: approval
+          requires:
+            - test
+            - build
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+      - deploy:
+          requires:
+            - hold
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
